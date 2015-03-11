@@ -7,6 +7,20 @@ var Login = React.createClass({
   statics: {
     attemptedTransition: null
   },
+  handleSubmit: function(e){
+    e.preventDefault();
+    var email = this.refs.email.getDOMNode().value;
+    var pw = this.refs.pw.getDomNote().value;
+    firebaseUtils.loginWithPW({email:email, pw:pw}, function(){
+      if Login.attemptedTransition{
+       var transition = Login.attemptedTransition;
+       Login.attemptedTransition = null;
+       transition.retry();
+      }else{
+        this.replaceWith('home');
+      }
+    }.bind(this));
+  },
   render: function(){
     return (
       <div className="col-sm-6 col-sm-offset-3">

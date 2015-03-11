@@ -1,5 +1,5 @@
 var Firebase = require('firebase');
-var forge = ""; /* Your Firebase URL Goes Here */
+var forge = "https://josefnbaroutes.firebaseio.com/?page=Auth"; /* Your Firebase URL Goes Here */
 var ref = new Firebase(forge);
 var cachedUser = null;
 
@@ -16,4 +16,7 @@ var addNewUserToFB = function(newUser){
   ref.child('user').child(key).set(newUser);
 };
 
+var firebaseUtils = {};
+
+module.exports = firebaseUtils;
 
